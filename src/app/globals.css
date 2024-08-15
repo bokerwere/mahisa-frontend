@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --custom-accent: #53669E;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  @apply max-w-[1400px]
+}
+
+.page-bg {
+  background: rgba(0, 0, 0, 0.3);
+
+  /*background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 70.14%, rgba(0, 0, 0, 0.00) 100%);*/
+}
+

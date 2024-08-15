@@ -1,0 +1,7 @@
+
+.radix-themes {
+    --teal-1: var(--custom-accent);
+    --accent-1: var(--custom-accent);
+    --accent-9: var(--custom-accent);
+    --default-font-family: var(--font-inter);
+}
