@@ -5,7 +5,6 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { mahisaa } from "../../data/strings";
 import CustomTable from "../../utils/CustomTable";
-import { getStorage } from "../../utils/storage"; // Import the storage utility
 import axios from "axios";
 
 const ViewMembers = () => {
@@ -18,7 +17,6 @@ const ViewMembers = () => {
   }, []);
 
   const getMembers = async (loading = true) => {
-    const { token } = getStorage();
     console.log(localStorage.getItem("Mahissa"), "token");
 
     setLoading(loading);
@@ -27,13 +25,9 @@ const ViewMembers = () => {
         Authorization: `Bearer ${localStorage.getItem("Mahissa")}`, // Include the token in the headers
       },
     });
-    console.log(res.data);
 
     if (res) {
       const { content } = res.data;
-
-      console.log(content);
-
       setData(content);
     }
     setLoading(false);
@@ -70,15 +64,6 @@ const ViewMembers = () => {
       {/*  Headers*/}
       <div className="flex justify-between items-center w-full">
         <h1 className="text-xl font-bold text-slate-100">Members</h1>
-        {/*  Search*/}
-        <div className="flex items-center gap-2">
-          <Icon icon="akar-icons:search" className="text-[#54617A] text-lg" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="text-[#54617A] text-sm"
-          />
-        </div>
         {/*  Filter*/}
         <div className="flex items-center gap-2">
           <Icon icon="akar-icons:filter" className="text-[#54617A] text-lg" />
@@ -98,8 +83,6 @@ const ViewMembers = () => {
       ) : (
         <CustomTable columns={columns} data={data} />
       )}
-
-      {/*  Table*/}
     </div>
   );
 };
