@@ -12,12 +12,12 @@ const menus = [
             title:'Members',
             url:'/admin/members'
         },
-        // {
-        //     id:3,
-        //     icon: "mdi:hands-pray",
-        //     title:'Pledges',
-        //     url:'/admin/pledges'
-        // },
+        {
+            id:3,
+            icon: "mdi:hands-pray",
+            title:'Loans',
+            url:'/admin/loans'
+        },
         {
             id:4,
             icon: "uil:transaction",

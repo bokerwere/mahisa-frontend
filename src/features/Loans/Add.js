@@ -4,42 +4,46 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import './style.css';
 import {Select} from "@radix-ui/themes";
 import {FormInput, FormSelect} from "@/components";
- 
-export default function AddStaff({  }) {
+
+export default function AddTransaction({  }) {
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild>
-                <button className="bg-primary text-[#eee] py-2 px-4 rounded-lg text-sm font-bold cursor-pointer">Add Board Members</button>
+                <button className="bg-primary text-[#eee] py-2 px-4 rounded-lg text-sm font-bold cursor-pointer">Add Transaction</button>
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="DialogOverlay"/>
                 <Dialog.Content className="DialogContent">
-                    <Dialog.Title className="pb-2 text-lg font-bold">Add Board Members</Dialog.Title>
+                    <Dialog.Title className="pb-2 text-lg font-bold">Add Transaction</Dialog.Title>
                     <fieldset className="flex flex-col gap-2 py-1">
-                        <label className="font-xs opacity-80 " htmlFor="fname">
-                            First Name
+                        <label className="font-xs opacity-80 " htmlFor="name">
+                            Pledge Entry
                         </label>
-                        <FormInput name='fname'/>
-                    </fieldset>
-                    <fieldset className="flex flex-col gap-2 py-1">
-                        <label className="font-xs opacity-80 " htmlFor="lname">
-                            Last Name
-                        </label>
-                        <FormInput name='lname'/>
+                        <FormInput type={"number"} name='entry'/>
+
                     </fieldset>
 
                     <fieldset className="flex flex-col gap-2 py-1">
-                        <label className="font-xs opacity-80 " htmlFor="email">
-                            Email
+                        <label className="font-xs opacity-80 " htmlFor="amount">
+                            Amount
                         </label>
-                        <FormInput type={"email"} name='email'/>
+                        <FormInput type={"number"} name='amount' placeholder='KES' />
                     </fieldset>
 
-                    <fieldset className="flex flex-col gap-2 py-1">
-                        <label className="font-xs opacity-80 " htmlFor="phone">
-                            Phone
+                    <fieldset className="flex relative flex-col gap-2 py-1">
+                        <label className="font-xs opacity-80 " htmlFor="name">
+                            Payment Mode
                         </label>
-                        <FormInput type={"number"} name='phone' placeholder='2547...' />
+                        <FormSelect options={[
+                            {
+                                label: "Cash",
+                                value: "cash"
+                            },
+                            {
+                                label: "M-Pesa",
+                                value: "mpesa"
+                            }
+                        ]} />
                     </fieldset>
 
                     <div style={{display: 'flex', marginTop: 25, justifyContent: 'flex-end'}}>
