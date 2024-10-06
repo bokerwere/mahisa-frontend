@@ -67,7 +67,7 @@ export default function ViewBoardMembers() {
         </div>
         <div className="flex gap-2">
           <Link
-            href="/admin/board-members/register"
+            href="boardmembers/register"
             className="bg-primary text-[#eee] py-2 px-4 rounded-lg text-sm font-bold"
           >
             Register Board Member
@@ -80,8 +80,6 @@ export default function ViewBoardMembers() {
       ) : (
         <CustomTable columns={columns} data={data} />
       )}
-
-      {/* Table */}
     </div>
   );
 }

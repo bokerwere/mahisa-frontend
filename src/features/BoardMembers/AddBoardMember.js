@@ -7,7 +7,7 @@ import axios from "axios";
 import { mahisaa } from "../../data/strings";
 import useHandleFormValidate from "../../hooks/useHandleFormValidate";
 
-const Register = ({ selected, handleClose, getData }) => {
+const AddBoardMember = ({ selected, handleClose, getData }) => {
   const router = useRouter();
   const [creds, setCreds] = useState({
     firstName: "",
@@ -39,8 +39,11 @@ const Register = ({ selected, handleClose, getData }) => {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Ensure form submission doesn't refresh the page
 
+    // let { error, valid } = await validater(creds);
+    // setError(error);
+    // if (!valid) return;
     setIsSubmitting(true);
 
     try {
@@ -173,4 +176,4 @@ const Register = ({ selected, handleClose, getData }) => {
   );
 };
 
-export default Register;
+export default AddBoardMember;
