@@ -10,6 +10,9 @@ import axios from "axios";
 const ViewMembers = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMemberId, setSelectedMemberId] = useState(null);
+  const [position, setPosition] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -33,6 +36,35 @@ const ViewMembers = () => {
     setLoading(false);
   };
 
+  const handleCreateBoardMember = async () => {
+    if (!selectedMemberId || !position) {
+      alert("Please select a member and a position.");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        `${mahisaa}/create/board-members`,
+        {
+          memberId: selectedMemberId,
+          position,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Mahissa")}`,
+          },
+        }
+      );
+      console.log(res.data, "res");
+
+      alert("Board member created successfully!");
+      setShowModal(false);
+    } catch (error) {
+      console.error("Error creating board member:", error);
+      alert("Failed to create board member.");
+    }
+  };
+
   const columns = useMemo(
     () => [
       { accessorKey: "firstName", header: "First Name" },
@@ -46,9 +78,23 @@ const ViewMembers = () => {
         accessorKey: "action",
         header: "Action",
         cell: ({ row }) => (
-          <button onClick={() => viewPledges(row.original)}>
-            View Pledges
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => viewPledges(row.original)}
+              className="text-blue-500 underline"
+            >
+              View Pledges
+            </button>
+            <button
+              onClick={() => {
+                setSelectedMemberId(row.original.memberId);
+                setShowModal(true);
+              }}
+              className="text-green-500 underline"
+            >
+              Create Board Member
+            </button>
+          </div>
         ),
       },
     ],
@@ -82,6 +128,37 @@ const ViewMembers = () => {
         <div> No results found!</div>
       ) : (
         <CustomTable columns={columns} data={data} />
+      )}
+      {showModal && (
+        <div className="fixed inset-0  bg-blue-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg">
+            <h2 className="text-xl mb-4">Create Board Member</h2>
+            <div className="mb-4">
+              <label className="block mb-2">Position</label>
+              <input
+                type="text"
+                value={position}
+                onChange={(e) => setPosition(e.target.value)}
+                className="border p-2 rounded w-full"
+                placeholder="Enter position (e.g., Chairman)"
+              />
+            </div>
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-red-500 text-white py-2 px-4 rounded"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleCreateBoardMember}
+                className="bg-blue-600 text-white py-2 px-4 rounded"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

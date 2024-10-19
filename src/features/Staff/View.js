@@ -1,11 +1,10 @@
 "use client";
-import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { mahisaa } from "../../data/strings";
-import CustomTable from "../../utils/CustomTable"; // Assuming CustomTable is reusable for both components
+import CustomTable from "../../utils/CustomTable";
 
 export default function ViewBoardMembers() {
   const [data, setData] = useState([]);
@@ -51,7 +50,7 @@ export default function ViewBoardMembers() {
   );
 
   function viewBoardMemberDetails(member) {
-    router.push(`/admin/board-members/details?id=${member.id}`);
+    router.push(`/admin/boardmembers/details?id=${member.id}`);
   }
 
   return (
@@ -64,14 +63,6 @@ export default function ViewBoardMembers() {
         <div className="flex items-center gap-2">
           <Icon icon="akar-icons:filter" className="text-[#54617A] text-xl" />
           <p className="text-[#54617A] text-sm">Filter</p>
-        </div>
-        <div className="flex gap-2">
-          <Link
-            href="boardmembers/register"
-            className="bg-primary text-[#eee] py-2 px-4 rounded-lg text-sm font-bold"
-          >
-            Register Board Member
-          </Link>
         </div>
       </div>
 

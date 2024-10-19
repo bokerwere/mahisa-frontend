@@ -1,5 +1,5 @@
-import { AddBoardMember } from "@/features/Staff";
+import Register from "@/features/Staff/Register";
 
 export default function RegisterPage() {
-  return <AddBoardMember />;
+  return <Register />;
 }

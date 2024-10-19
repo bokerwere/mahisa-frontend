@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
 import { FormInput } from "@/components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { mahisaa } from "../../data/strings";
 import useHandleFormValidate from "../../hooks/useHandleFormValidate";
 
-const AddBoardMember = ({ selected, handleClose, getData }) => {
+const Register = ({ selected, handleClose, getData }) => {
   const router = useRouter();
   const [creds, setCreds] = useState({
     firstName: "",
@@ -176,4 +176,4 @@ const AddBoardMember = ({ selected, handleClose, getData }) => {
   );
 };
 
-export default AddBoardMember;
+export default Register;

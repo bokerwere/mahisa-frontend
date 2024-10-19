@@ -20,7 +20,7 @@ const ViewLoans = () => {
 
     const res = await axios.get(`${mahisaa}/loans/findAll`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("Mahissa")}`, // Include the token in the headers
+        Authorization: `Bearer ${localStorage.getItem("Mahissa")}`,
       },
     });
 
