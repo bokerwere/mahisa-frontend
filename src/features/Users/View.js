@@ -7,7 +7,7 @@ import { mahisaa } from "../../data/strings";
 import CustomTable from "../../utils/CustomTable";
 import axios from "axios";
 
-const ViewMembers = () => {
+const ViewUsers = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +23,7 @@ const ViewMembers = () => {
     console.log(localStorage.getItem("Mahissa"), "token");
 
     setLoading(loading);
-    const res = await axios.get(`${mahisaa}/members/findAll?page=0&size=20`, {
+    const res = await axios.get(`${mahisaa}/auths/getAllUsers?page=0&size=20`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("Mahissa")}`, // Include the token in the headers
       },
@@ -55,6 +55,7 @@ const ViewMembers = () => {
           },
         }
       );
+      console.log(res.data, "res");
 
       alert("Board member created successfully!");
       setShowModal(false);
@@ -66,33 +67,22 @@ const ViewMembers = () => {
 
   const columns = useMemo(
     () => [
-      { accessorKey: "firstName", header: "First Name" },
-      { accessorKey: "lastName", header: "Last Name" },
-      { accessorKey: "nationalId", header: "ID Number" },
+      { accessorKey: "userName", header: "UserName" },
       { accessorKey: "phoneNumber", header: "Phone" },
       { accessorKey: "email", header: "Email" },
-      { accessorKey: "status", header: "Status" },
-      { accessorKey: "memberNo", header: "Member No" },
+      { accessorKey: "userStatus", header: "Status" },
+      { accessorKey: "roles", header: "Role" },
       {
         accessorKey: "action",
         header: "Action",
         cell: ({ row }) => (
           <div className="flex gap-2">
-            <button
-              onClick={() => viewPledges(row.original)}
+            <Link
+              href={"users/register"}
               className="bg-primary border-1 text-white rounded-full px-3 py-2"
             >
-              View Pledges
-            </button>
-            <button
-              onClick={() => {
-                setSelectedMemberId(row.original.memberId);
-                setShowModal(true);
-              }}
-              className="bg-primary border-1 text-white rounded-full px-3 py-2"
-            >
-              Create Board Member
-            </button>
+              Create User
+            </Link>
           </div>
         ),
       },
@@ -129,7 +119,7 @@ const ViewMembers = () => {
         <CustomTable columns={columns} data={data} />
       )}
       {showModal && (
-        <div className="fixed inset-0  bg-primaryLight bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0  bg-blue-900 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg">
             <h2 className="text-xl mb-4">Create Board Member</h2>
             <div className="mb-4">
@@ -163,4 +153,4 @@ const ViewMembers = () => {
   );
 };
 
-export default ViewMembers;
+export default ViewUsers;

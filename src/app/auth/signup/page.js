@@ -9,7 +9,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     password: "",
   });
@@ -41,62 +41,60 @@ const SignUp = () => {
   };
 
   return (
-    <div className='min-h-[100vh] mx-0 my-auto px-0 py-10 flex flex-col items-center gap-[10px]'>
+    <div className="min-h-[100vh] mx-0 my-auto px-0 py-10 flex flex-col items-center gap-[10px]">
       <Link href={"/"}>
-        <Image
-          src='/logo.png'
-          alt='Songa Logo'
-          width={100}
-          height={80}
-        />
+        <Image src="/logo.png" alt="Songa Logo" width={100} height={80} />
       </Link>
-      <h1 className='text-xl font-bold'>Mahisaa Sacco</h1>
-      <h1 className='text-2xl font-bold pt-10'>Sign Up</h1>
+      <h1 className="text-xl font-bold">Mahisaa Sacco</h1>
+      <h1 className="text-2xl font-bold pt-10">Sign Up</h1>
 
-      <form className='w-[300px] flex flex-col gap-[20px]' onSubmit={handleSubmit}>
+      <form
+        className="w-[300px] flex flex-col gap-[20px]"
+        onSubmit={handleSubmit}
+      >
         <FormInput
-          type='text'
-          name='firstName'
-          placeholder='First Name'
+          type="text"
+          name="firstName"
+          placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
         />
         <FormInput
-          type='text'
-          name='lastName'
-          placeholder='Last Name'
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
         />
         <FormInput
-          type='number'
-          name='phone'
-          placeholder='Phone Number'
-          value={formData.phone}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={formData.phoneNumber}
           onChange={handleChange}
         />
         <FormInput
-          type='email'
-          name='email'
-          placeholder='johndoe@email.com'
+          type="email"
+          name="email"
+          placeholder="johndoe@email.com"
           value={formData.email}
           onChange={handleChange}
         />
         <FormInput
-          type='password'
-          name='password'
-          placeholder='Password'
+          type="password"
+          name="password"
+          placeholder="Password"
           value={formData.password}
           onChange={handleChange}
         />
 
         {error && <p className="text-red-500 text-center">{error}</p>}
 
-        <Link href='/auth/signin' className='text-[#7d7c7c] text-center'>
+        <Link href="/auth/signin" className="text-[#7d7c7c] text-center">
           Already a member? Login
         </Link>
 
-        <LoadingButton type='submit' disabled={loading}>
+        <LoadingButton type="submit" disabled={loading}>
           {loading ? "Signing Up..." : "Sign Up"}
         </LoadingButton>
       </form>

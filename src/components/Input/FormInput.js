@@ -22,7 +22,7 @@ const FormInput = ({ onChange, value, name, type = 'text', placeholder, error })
                 className='p-[7px] bg-transparent border-[2px] rounded-lg border-[#bbb] outline-none text-[#bbb] text-sm focus:text-black font-bold w-full'
             />
                 {/*{...register(name)}*/}
-            {/* Add a checkbox to toggle password visibility */}
+            {/* Add a checkbox to toggle password visibility */} 
             {type === 'password' && (
                 <label className='my-3 space-x-2'>
                     <input

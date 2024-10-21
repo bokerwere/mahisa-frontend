@@ -1,35 +1,40 @@
-
 const menus = [
-        {
-            id:1,
-            icon: "ion:analytics-outline",
-            title:'Analytics',
-            url:'/admin/analytics'
-        },
-        {
-            id:2,
-            icon: "tabler:user-square-rounded",
-            title:'Members',
-            url:'/admin/members'
-        },
-        {
-            id:3,
-            icon: "mdi:hands-pray",
-            title:'Loans',
-            url:'/admin/loans'
-        },
-        {
-            id:4,
-            icon: "uil:transaction",
-            title:'Transactions',
-            url:'/admin/transactions'
-        },
-        {
-            id:5,
-            icon: "eos-icons:admin",
-            title:'Board Members',
-            url:'/admin/boardmembers'
-        },
-    ]
+  {
+    id: 1,
+    icon: "ion:analytics-outline",
+    title: "Analytics",
+    url: "/admin/analytics",
+  },
+  {
+    id: 2,
+    icon: "tabler:user-square-rounded",
+    title: "Users",
+    url: "/admin/users",
+  },
+  {
+    id: 2,
+    icon: "tabler:user-square-rounded",
+    title: "Members",
+    url: "/admin/members",
+  },
+  {
+    id: 3,
+    icon: "mdi:hands-pray",
+    title: "Loans",
+    url: "/admin/loans",
+  },
+  {
+    id: 4,
+    icon: "uil:transaction",
+    title: "Transactions",
+    url: "/admin/transactions",
+  },
+  {
+    id: 5,
+    icon: "eos-icons:admin",
+    title: "Board Members",
+    url: "/admin/boardmembers",
+  },
+];
 
-export default menus
+export default menus;
