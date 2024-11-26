@@ -81,6 +81,12 @@ const ViewUsers = () => {
               href={"users/register"}
               className="bg-primary border-1 text-white rounded-full px-3 py-2"
             >
+              View
+            </Link>
+            <Link
+              href={"users/register"}
+              className="bg-primary border-1 text-white rounded-full px-3 py-2"
+            >
               Create User
             </Link>
           </div>
